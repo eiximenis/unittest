@@ -12,6 +12,8 @@ namespace Bank3.UnitTests.Factories
         public BankAccount Source { get; init; }
         public BankAccount Target { get; init; }
         public PaymentsService Service { get; init; }
+
+        public Mock<IEmailService> MockEmail { get; init; }
     }
     static class TransferTestsScenariosFactory
     {
@@ -24,12 +26,16 @@ namespace Bank3.UnitTests.Factories
                 .Returns(source);
             mock.Setup(x => x.GetByIban("2222"))
                 .Returns(target);
-            var svc = new PaymentsService(mock.Object);
+
+            var emailMock = new Mock<IEmailService>();
+
+            var svc = new PaymentsService(mock.Object, emailMock.Object);
             return new TransferTestsScenario()
             {
                 Service = svc,
                 Source = source,
-                Target = target
+                Target = target,
+                MockEmail = emailMock
             };
         }
     }

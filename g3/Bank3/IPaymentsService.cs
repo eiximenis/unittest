@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bank3
 {
-    public record TransferData(decimal Amount, string Concept);
+    public record TransferData(decimal Amount, string Concept, bool SendEmail);
 
     public enum TransferResult
     {

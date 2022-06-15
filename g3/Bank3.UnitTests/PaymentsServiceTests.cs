@@ -24,7 +24,7 @@ namespace Bank3.UnitTests
             _mock.Setup(x => x.GetByIban("0000"))
                 .Returns(_blockedSource);
 
-            _svc = new PaymentsService(_mock.Object);
+            _svc = new PaymentsService(_mock.Object, new Mock<IEmailService>().Object);
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace Bank3.UnitTests
             var scenario = TransferTestsScenariosFactory.CreateScenarioWithTwoUnblockedAccounts();
 
             // Act
-            var result = scenario.Service.Transfer("1111", "2222", new TransferData(100m, "Test transfer"));
+            var result = scenario.Service.Transfer("1111", "2222", new TransferData(100m, "Test transfer", SendEmail: false));
 
             // Assert
             Assert.Equal(TransferResult.Ok, result);
@@ -48,7 +48,7 @@ namespace Bank3.UnitTests
             // Arrange
             
             // Act
-            var result = _svc.Transfer("1111", "2222", new TransferData(500m, "Test transfer"));
+            var result = _svc.Transfer("1111", "2222", new TransferData(500m, "Test transfer", SendEmail: false));
 
             // Assert
             Assert.Equal(TransferResult.NotEnoughFunds, result);
@@ -59,13 +59,37 @@ namespace Bank3.UnitTests
         [Fact]
         public void GivenBlockedSourceThenTransferShouldNotBeDone()
         {
-            var result = _svc.Transfer("0000", "2222", new TransferData(100m, "Test transfer"));
-
+            var result = _svc.Transfer("0000", "2222", new TransferData(100m, "Test transfer", SendEmail: false));
+            
             // Assert
             Assert.Equal(TransferResult.BlockedAccount, result);
             Assert.Equal(200m, _blockedSource.Money);
             Assert.Equal(300m, _target.Money);
 
+        }
+
+        [Fact]
+        public void GivenValidTransferThenPaymentServiceShouldSendAnEmail()
+        {
+            var scenario = TransferTestsScenariosFactory.CreateScenarioWithTwoUnblockedAccounts();
+            var result = scenario.Service.Transfer("1111", "2222", new TransferData(100m, "Test transfer", SendEmail: true));
+
+            Assert.Equal(TransferResult.Ok, result);
+            var mock = scenario.MockEmail;
+
+            mock.Verify(m => m.SendEmail("customer@mail.com", "Transfer", "You have received 100"));
+        }
+
+        [Fact]
+        public void GivenInvalidTransferDataThenPaymentServiceShouldNotSendTheEmail()
+        {
+            var scenario = TransferTestsScenariosFactory.CreateScenarioWithTwoUnblockedAccounts();
+            var result = scenario.Service.Transfer("1111", "2222", new TransferData(1000m, "Test transfer", SendEmail: true));
+            Assert.Equal(TransferResult.NotEnoughFunds, result);
+
+            var mock = scenario.MockEmail;
+
+            mock.Verify(m => m.SendEmail(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()), Times.Never());
         }
 
     }

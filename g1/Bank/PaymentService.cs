@@ -10,9 +10,12 @@ namespace Bank
     {
 
         private readonly IBankAccountRepository _repository;
-        public PaymentService(IBankAccountRepository repository)
+        private readonly IEmailService _emailService;
+        public PaymentService(IBankAccountRepository repository, IEmailService emailService)
         {
+            ArgumentNullException.ThrowIfNull(emailService);
             _repository = repository;
+            _emailService = emailService;
         }
         public bool Transfer(string from, string to, TransferData data)
         {
@@ -32,6 +35,12 @@ namespace Bank
 
             source.Withdrawn(qty);
             target.Ingress(qty);
+
+            if (data.sendEmail)
+            {
+                _emailService.SendEmail("someone@mail.com", "New Transfer!", "");
+            }
+
             return true;
         }
     }

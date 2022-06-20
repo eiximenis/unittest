@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  bank.api:
+    image: ${DOCKER_REGISTRY-}bankapi
+    build:
+      context: .
+      dockerfile: Bank.Api/Dockerfile
+
+  database:
+    image: mcr.microsoft.com/mssql/server
+    
+  redis:
+    image: redis
+    
+  bank.fraudapi:
+    image: ${DOCKER_REGISTRY-}bankfraudapi
+    build:
+      context: .
+      dockerfile: Bank.FraudApi/Dockerfile
+

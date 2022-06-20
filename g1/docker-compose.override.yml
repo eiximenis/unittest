@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  bank.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  database:
+    environment:
+      - "ACCEPT_EULA=Y"
+      - "SA_PASSWORD=12345aA!"  
+    ports:
+    - "31433:1433"
+    
+  redis:
+    ports:
+    - 6379:6379
+    
+  bank.fraudapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - REDIS__HOST=redis:6379
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

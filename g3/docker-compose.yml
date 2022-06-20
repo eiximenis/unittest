@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  bank3.api:
+    image: ${DOCKER_REGISTRY-}bank3api
+    build:
+      context: .
+      dockerfile: Bank3.Api/Dockerfile
+    profiles:
+      - code
+      - all
+
+  redis:
+    image: redis
+    profiles:
+      - infra
+      - all
+  bank3.fraudapi:
+    image: ${DOCKER_REGISTRY-}bank3fraudapi
+    build:
+      context: .
+      dockerfile: Bank3.FraudApi/Dockerfile
+    profiles:
+      - code
+      - all

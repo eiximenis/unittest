@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeProfile": {
+        "includes": [
+          "code",
+          "infra"
+        ]
+      },
+      "commandVersion": "1.0"
+    }
+  }
+}

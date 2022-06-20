@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  bank2.api:
+    image: ${DOCKER_REGISTRY-}bank2api
+    build:
+      context: .
+      dockerfile: Bank2.Api/Dockerfile
+
+  redis:
+    image: redis
+  bank2.fraudtestapi:
+    image: ${DOCKER_REGISTRY-}bank2fraudtestapi
+    build:
+      context: .
+      dockerfile: Bank2.FraudTestApi/Dockerfile
+

@@ -5,7 +5,15 @@ VisualStudioVersion = 17.2.32427.441
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank2", "Bank2\Bank2.csproj", "{A7D9FC4B-2AC0-4088-8758-E0EFF309F58F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank2.UnitTests", "Bank2.UnitTests\Bank2.UnitTests.csproj", "{28B1253B-EFF2-4788-A602-0649A12F08AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank2.UnitTests", "Bank2.UnitTests\Bank2.UnitTests.csproj", "{28B1253B-EFF2-4788-A602-0649A12F08AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank2.Api", "Bank2.Api\Bank2.Api.csproj", "{CBA508CD-0091-46D2-AD47-2075F402EC6E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{06A58458-5C5C-49E1-8829-58D8A39CA9EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank2.Api.IntegrationTests", "Bank2.Api.IntegrationTests\Bank2.Api.IntegrationTests.csproj", "{BF1A36C3-4FE5-4B66-A67B-9D664688F9CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank2.FraudTestApi", "Bank2.FraudTestApi\Bank2.FraudTestApi.csproj", "{9E77533B-4F92-44EF-824C-2CBE3C270E83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,22 @@ Global
 		{28B1253B-EFF2-4788-A602-0649A12F08AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28B1253B-EFF2-4788-A602-0649A12F08AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28B1253B-EFF2-4788-A602-0649A12F08AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBA508CD-0091-46D2-AD47-2075F402EC6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBA508CD-0091-46D2-AD47-2075F402EC6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBA508CD-0091-46D2-AD47-2075F402EC6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBA508CD-0091-46D2-AD47-2075F402EC6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06A58458-5C5C-49E1-8829-58D8A39CA9EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06A58458-5C5C-49E1-8829-58D8A39CA9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06A58458-5C5C-49E1-8829-58D8A39CA9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06A58458-5C5C-49E1-8829-58D8A39CA9EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF1A36C3-4FE5-4B66-A67B-9D664688F9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF1A36C3-4FE5-4B66-A67B-9D664688F9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF1A36C3-4FE5-4B66-A67B-9D664688F9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF1A36C3-4FE5-4B66-A67B-9D664688F9CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E77533B-4F92-44EF-824C-2CBE3C270E83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E77533B-4F92-44EF-824C-2CBE3C270E83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E77533B-4F92-44EF-824C-2CBE3C270E83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E77533B-4F92-44EF-824C-2CBE3C270E83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

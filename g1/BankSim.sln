@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Api", "Bank.Api\Bank.A
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F0B85809-ED08-4067-9999-65B922C40A47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Api.IntegrationTests", "Bank.Api.IntegrationTests\Bank.Api.IntegrationTests.csproj", "{73058652-1415-4F79-9A9C-FB2423543360}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Api.IntegrationTests", "Bank.Api.IntegrationTests\Bank.Api.IntegrationTests.csproj", "{73058652-1415-4F79-9A9C-FB2423543360}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.FraudApi", "Bank.FraudApi\Bank.FraudApi.csproj", "{72921CB3-40F3-46D3-81F8-05142EEE1294}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.FraudApi", "Bank.FraudApi\Bank.FraudApi.csproj", "{72921CB3-40F3-46D3-81F8-05142EEE1294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.FraudApi.IntegrationTests", "Bank.FraudApi.IntegrationTests\Bank.FraudApi.IntegrationTests.csproj", "{2BD20651-3DDA-47E6-A81A-6F2904B60388}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{72921CB3-40F3-46D3-81F8-05142EEE1294}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72921CB3-40F3-46D3-81F8-05142EEE1294}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72921CB3-40F3-46D3-81F8-05142EEE1294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BD20651-3DDA-47E6-A81A-6F2904B60388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD20651-3DDA-47E6-A81A-6F2904B60388}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BD20651-3DDA-47E6-A81A-6F2904B60388}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BD20651-3DDA-47E6-A81A-6F2904B60388}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

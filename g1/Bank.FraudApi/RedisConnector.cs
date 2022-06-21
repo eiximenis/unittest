@@ -13,6 +13,13 @@ namespace Bank.FraudApi
         {
             _logger = logger;
             _config = config.Value;
+
+            Connection = ConnectionMultiplexer.Connect(new ConfigurationOptions()
+            {
+                EndPoints = { _config.Host }
+            });
+
+            _logger.LogInformation("Created multiplexer to redis {redis}", _config.Host);
         }
     }
 }

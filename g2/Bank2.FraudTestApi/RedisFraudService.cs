@@ -2,19 +2,30 @@
 {
     public class RedisFraudService : IFraudService
     {
-        public Task<bool> CheckFraud(string iban)
+        private readonly RedisConnector _connector;
+        public RedisFraudService(RedisConnector connector)
         {
-            throw new NotImplementedException();
+            _connector = connector;
         }
 
-        public Task DeleteFraud(string iban)
+        public async Task<bool> CheckFraud(string iban)
         {
-            throw new NotImplementedException();
+            var db = _connector.Multiplexer.GetDatabase();
+            var data = await db.StringGetAsync(iban);
+
+            return data.HasValue;
         }
 
-        public Task SetFraud(string iban)
+        public async Task DeleteFraud(string iban)
         {
-            throw new NotImplementedException();
+            var db = _connector.Multiplexer.GetDatabase();
+            await db.StringGetDeleteAsync(iban);
+        }
+
+        public async Task SetFraud(string iban)
+        {
+            var db = _connector.Multiplexer.GetDatabase();
+            await db.StringSetAsync(iban, "FRAUD");
         }
     }
 }

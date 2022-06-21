@@ -4,8 +4,11 @@ using StackExchange.Redis;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.Configure<RedisConfiguration>(builder.Configuration.GetSection("redis"));
+builder.Services
+    .Configure<RedisConfiguration>(builder.Configuration.GetSection("redis"));
 
+builder.Services.AddSingleton<RedisConnector>();
+builder.Services.AddScoped<IFraudService, RedisFraudService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
